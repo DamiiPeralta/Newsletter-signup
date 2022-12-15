@@ -8,7 +8,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.use(express.static("public"));
+app.use(express.static(__dirname +"/public"));
 
 app.get("/",function(req, res){
     res.sendFile(__dirname + "/signup.html" );
@@ -40,7 +40,7 @@ app.post("/", function(req, res){
 
     const options = {
         method: "POST",
-        auth:"damian1:a8362f842d26317bd601a9a0bd6a78886-us8"
+        auth:"damian1:8beefeee1090469916aa2221ea6970c3-us8"
     }
     
     const request = https.request(url, options, function(response){
@@ -63,7 +63,7 @@ app.post("/failure", function(req, res) {
     res.redirect("/");
 })
 
-app.listen(process,env,PORT || 3000, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log("Server is running on port 3000");
 })
 //Api Key
